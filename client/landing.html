@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Movie App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="auth-page">
+  <div class="auth-background"></div>
+  
+  <main class="auth-container">
+    <div class="auth-card glass-card">
+      <h1 class="auth-title">Welcome to Movie App</h1>
+      <p class="auth-subtitle">Discover and explore thousands of movies</p>
+      
+      <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+        <a href="login.html" class="btn btn-primary btn-full" style="text-decoration: none; display: block; text-align: center;">
+          <span class="btn-text">Sign In</span>
+        </a>
+        
+        <a href="register.html" class="btn" style="text-decoration: none; display: block; text-align: center; background: transparent; border: 1px solid var(--glass-border); color: var(--text-light);">
+          <span class="btn-text">Create Account</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Redirect if already logged in
+    fetch('/api/session', { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn) {
+          window.location.href = '/home.html';
+        }
+      });
+  </script>
+</body>
+</html>
